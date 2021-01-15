@@ -1,6 +1,6 @@
 <x-app-layout>
 
-Hola mundo
+Hola Ricardo
 
 </x-app-layout>
 
