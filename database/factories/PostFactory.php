@@ -24,7 +24,7 @@ class PostFactory extends Factory
      */
     public function definition()
     {
-
+    
         $name= $this->faker->sentence(15);
     
         return [
