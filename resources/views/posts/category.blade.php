@@ -50,7 +50,7 @@
         
     @endforeach
 
-    <div class="max-w-2xl mt-4">
+    <div class="max-w-2xl mt-4 mx-auto">
 
        {{$posts->links()}}
 
