@@ -19,14 +19,14 @@
                          @foreach($post->tags as $tag)
 
                         <a class="inline-block px-3 h-6 bg-{{$tag->color}}-600 text-white rounded-full" 
-                           href="">{{$tag->name}}
+                           href="{{route('posts.tag', $post)}}">{{$tag->name}}
                         </a>   
 
                          @endforeach
 
                     </div>
                    
-                    <a href="{{route('posts.show', $post)}}">
+                    <a href="{{route('posts.show', $post)}}" class="mt-2">
                         
                         {{$post->name}}
 
