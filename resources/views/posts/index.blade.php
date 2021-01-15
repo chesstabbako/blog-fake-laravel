@@ -26,7 +26,7 @@
 
                     </div>
                    
-                    <a href="">
+                    <a href="{{route('posts.show', $post)}}">
                         
                         {{$post->name}}
 
