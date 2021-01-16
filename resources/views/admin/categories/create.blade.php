@@ -15,26 +15,27 @@
     {!! Form::label('name', 'Nombre') !!}
     {!! Form::text('name', null , ['class'=>'form-control', 'placeholder'=>'Category name']) !!}
 
-</div>
+    @error('name')
 
-@error('name')
-
-  <span class="text-danger">{{$message}}</span>
+      <span class="text-danger">{{$message}}</span>
     
-@enderror
+    @enderror
+    
+</div>
 
 <div class="form-group">
 
     {!! Form::label('slug', 'Slug') !!}
     {!! Form::text('slug', null , ['readonly', 'class'=>'form-control', 'placeholder'=>'Slug name']) !!}
 
+    @error('slug')
+
+     <span class="text-danger">{{$message}}</span>
+    
+    @enderror
+
 </div>
 
-@error('slug')
-
-  <span class="text-danger">{{$message}}</span>
-    
-@enderror
 
 {!! Form::submit('Crear', ['class'=>'btn btn-primary']) !!}
 
@@ -42,22 +43,20 @@
 
 @stop
 
-{{-- @section('js')
+@section('js')
+    <script src="{{asset('vendor\jQuery-Plugin-stringToSlug-1.3\jquery.stringToSlug.min.js')}}"></script>
 
+    <script>
+      
+    $(document).ready( function() {
+      $("#name").stringToSlug({
+        setEvents: 'keyup keydown blur',
+        getPut: '#slug',
+        space: '-'
+      });
+    });
 
-<script src="vendor\jQuery-Plugin-stringToSlug-1.3\jquery.stringToSlug.min.js"></script>
-    
-<script>
+    </script>
 
-$(document).ready( function() {
-  $("#name").stringToSlug({
-    setEvents: 'keyup keydown blur',
-    getPut: '#slug',
-    space: '-'
-  });
-});
-
-</script>
-
-@endsection --}}
+@stop
 
