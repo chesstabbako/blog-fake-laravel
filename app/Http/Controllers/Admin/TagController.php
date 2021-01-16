@@ -20,7 +20,7 @@ class TagController extends Controller
         return view('admin.tags.index', compact('tags'));
 
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -74,9 +74,10 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($tag)
+    public function show(Tag $tag)
     {
-        //
+
+        return view('admin.tags.show', compact('tag'));
     }
 
     /**
@@ -85,9 +86,23 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($tag)
+    public function edit(Tag $tag)
     {
-        //
+        $colors= [
+
+            'blue' => 'azul', 
+            'yellow' => 'amarillo', 
+            'red' => 'rojo',
+            'indigo' => 'indigo', 
+            'dimgray' => 'gris pesado', 
+            'pink' => 'rosado',
+            'darkblue' => 'azul oscuro',
+            'purple' => 'morado',
+            'orange' => 'anaranjado'
+
+        ];
+
+        return view('admin.tags.edit', compact(['tag', 'colors']));
     }
 
     /**
@@ -97,7 +112,7 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $tag)
+    public function update(Request $request,Tag $tag)
     {
         $request->validate([
          
@@ -121,8 +136,13 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($tag)
+    public function destroy(Tag $tag)
     {
+        
+        $tag->delete();
+         
+        return redirect()->route('admin.tags.index')
+                        ->with('info', 'Eliminado con éxito');
         
     }
 }

@@ -187,7 +187,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => '/',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -245,12 +245,14 @@ return [
             'text' => 'Categorias',
             'route'  => 'admin.categories.index',
             'icon' => 'fab fa-fw fa-buffer',
+            'active' => ['admin/categories/*']
             
         ],
         [
             'text' => 'Etiquetas',
             'route'  => 'admin.tags.index',
             'icon' => 'fab fa-fw fa-buffer',
+            'active' => ['admin/tags/*']
             
         ],
         [
