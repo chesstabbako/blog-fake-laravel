@@ -194,7 +194,7 @@ return [
     'password_reset_url' => 'password/reset',
     'password_email_url' => 'password/email',
     'profile_url' => false,
-
+    
     /*
     |--------------------------------------------------------------------------
     | Laravel Mix
