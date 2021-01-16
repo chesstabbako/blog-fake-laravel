@@ -245,11 +245,13 @@ return [
             'text' => 'Categorias',
             'route'  => 'admin.categories.index',
             'icon' => 'fab fa-fw fa-buffer',
+            
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Etiquetas',
+            'route'  => 'admin.tags.index',
+            'icon' => 'fab fa-fw fa-buffer',
+            
         ],
         [
             'text'    => 'multilevel',

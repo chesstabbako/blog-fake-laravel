@@ -8,7 +8,7 @@
 
 @section('content')
 
-    {!! Form::open(['route'=>'admin.categories.store']) !!}
+    {!! Form::open(['route'=>'admin.tags.store']) !!}
 
 <div class="form-group">
 
@@ -36,6 +36,18 @@
 
 </div>
 
+<div class="form-group">
+
+    {!! Form::label('color', 'Color') !!}
+    {!! Form::select('color', $colors, null, ['class'=>'form-control']) !!}
+
+    @error('color')
+
+     <span class="text-danger">{{$message}}</span>
+    
+    @enderror
+
+</div>
 
 {!! Form::submit('Crear', ['class'=>'btn btn-primary']) !!}
 

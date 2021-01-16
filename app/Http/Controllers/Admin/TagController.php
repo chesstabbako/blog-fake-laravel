@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\Tag;
 
-class CategoryController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        
-        $categories= Category::all();
+       $tags=Tag::all();
 
-        return view('admin.categories.index', compact('categories'));
+        return view('admin.tags.index', compact('tags'));
+
     }
 
     /**
@@ -28,7 +28,21 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+        $colors= [
+
+            'blue' => 'azul', 
+            'yellow' => 'amarillo', 
+            'red' => 'rojo',
+            'indigo' => 'indigo', 
+            'dimgray' => 'gris pesado', 
+            'pink' => 'rosado',
+            'darkblue' => 'azul oscuro',
+            'purple' => 'morado',
+            'orange' => 'anaranjado'
+
+        ];
+
+        return view('admin.tags.create', compact('colors'));
     }
 
     /**
@@ -40,16 +54,17 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
-        'name' => 'required',
-        'slug' => 'required|unique:categories'
+         
+            'name'=> 'required', 
+            'slug' => 'required|unique:tags', 
+            'color' => 'required'
 
         ]);
+        
+        Tag::create($request->all());
 
-        $category= Category::create($request->all());
-
-        return redirect()->route('admin.categories.index')
-                       ->with('info', 'Creado con éxito');
+         return redirect()->route('admin.tags.index')
+                        ->with('info', 'Creado con éxito');
 
     }
 
@@ -59,9 +74,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($tag)
     {
-        return view('admin.categories.show', compact('category'));
+        //
     }
 
     /**
@@ -70,10 +85,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($tag)
     {
-
-        return view('admin.categories.edit', compact('category'));
+        //
     }
 
     /**
@@ -83,20 +97,22 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $tag)
     {
         $request->validate([
+         
+            'name'=> 'required', 
+            'slug' => "required|unique:tags,slug,$tag->id", 
+            'color' => 'required'
 
-            'name' => 'required',
-            'slug' => "required|unique:categories,slug,$category->id"
-    
         ]);
+        
+        $tag->update($request->all());
 
-        $category->update($request->all());
-
-        return redirect()->route('admin.categories.edit', $category)
+         return redirect()->route('admin.tags.index')
                         ->with('info', 'Actualizado con éxito');
 
+    
     }
 
     /**
@@ -105,13 +121,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($tag)
     {
-
-        $category->delete();
-
-        return redirect()->route('admin.categories.index')
-                       ->with('info', 'Eliminado con éxito');
-
+        
     }
 }

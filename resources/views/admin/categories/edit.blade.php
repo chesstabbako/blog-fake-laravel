@@ -8,6 +8,16 @@
 
 @section('content')
 
+@if (session('info'))
+
+<div class="alert alert-success">
+
+    <span>{{session('info')}}</span>
+
+</div>
+
+@endif
+
 {!! Form::model($category, ['route' => ['admin.categories.update', $category], 'method' => 'put']) !!}
 
 <div class="form-group">
