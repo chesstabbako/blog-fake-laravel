@@ -11,12 +11,24 @@
 
        <div class="card-body">
            
-           {!! Form::open(['route'=>'admin.posts.store', 'method'=>'put']) !!}
+           {!! Form::open(['route'=>'admin.posts.store']) !!}
+
+            {!! Form::hidden('user_id', Auth::user()->id) !!}
              
              <div class="form-group">
                 
                 {!! Form::label('name', 'Nombre del post') !!}
                 {!! Form::text('name', null, ['placeholder'=>'Ingrese el nombre del post','autocomplete'=>'off', 'class'=>'form-control']) !!}
+
+                @error('name')
+
+                <small>
+
+                  *{{$message}}
+
+                </small>
+
+            @enderror
 
              </div>
 
@@ -25,12 +37,32 @@
                 {!! Form::label('slug', 'Slug') !!}
                 {!! Form::text('slug', null, ['readonly', 'class'=>'form-control']) !!}
 
+                <small>
+                  
+                    @error('slug')
+                        *{{$message}}
+                    @enderror
+
+                </small>
+
              </div>
 
              <div class="form-group">
                 
                 {!! Form::label('category_id', 'Categorias') !!}
                 {!! Form::select('category_id', $categories, null, ['class'=>'form-control']) !!}
+                
+                
+                  
+                    @error('category_id')
+
+                        <small>
+
+                          *{{$message}}
+
+                        </small>
+
+                    @enderror      
 
              </div>
 
@@ -46,9 +78,19 @@
                 
                   {{$tag->name}}
 
+                </label>
+
                 @endforeach
 
-                </label>
+                @error('tags[]')
+
+                <small>
+
+                  *{{$message}}
+
+                </small>
+
+            @enderror
 
              </div>
 
@@ -57,6 +99,16 @@
                 {!! Form::label('extract', 'Extract') !!}
                 {!! Form::textarea('extract', null, ['placeholder'=>'Ingrese el extracto', 'class'=>'form-control']) !!}
                 
+                @error('extract')
+
+                    <small>
+
+                        *{{$message}}
+
+                    </small>
+
+                @enderror 
+
              </div>
 
              <div class="form-group">
@@ -64,6 +116,16 @@
                 {!! Form::label('body', 'Cuerpo') !!}
                 {!! Form::textarea('body', null, ['placeholder'=>'Ingrese el contenido', 'class'=>'form-control']) !!}
                 
+                @error('body')
+
+                    <small>
+
+                        *{{$message}}
+
+                    </small>
+
+                @enderror 
+
              </div>
 
              <div class="form-group">
@@ -73,7 +135,7 @@
                 <label class="mr-4">
                     
                     {!! Form::radio('status', 1, true) !!}
-                    borrador
+                    Borrador
   
                 </label>
                 
