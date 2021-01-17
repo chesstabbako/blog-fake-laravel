@@ -3,7 +3,10 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+<a class="btn btn-secondary btn-sm float-right" href="{{route('admin.posts.create')}}">
+    Crear nuevo post
+</a>
+    <h1>Mis posts</h1>
 @stop
 
 @section('content')

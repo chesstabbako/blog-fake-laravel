@@ -244,21 +244,21 @@ return [
         [
             'text' => 'Categorias',
             'route'  => 'admin.categories.index',
-            'icon' => 'fab fa-fw fa-buffer',
+            'icon_color' => 'blue',
             'active' => ['admin/categories/*']
             
         ],
         [
             'text' => 'Etiquetas',
             'route'  => 'admin.tags.index',
-            'icon' => 'fab fa-fw fa-buffer',
+            'icon_color' => 'orange',
             'active' => ['admin/tags/*']
             
         ],
         
         ['header' => 'OPCIONES DE BLOG'],
         [
-            'text'       => 'Lista de posts',
+            'text'       => 'Mis  posts',
             'icon_color' => 'red',
             'route'      => 'admin.posts.index',
         ],

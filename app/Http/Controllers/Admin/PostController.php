@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Category;
+use App\Models\Tag;
 
 class PostController extends Controller
 {
@@ -26,7 +29,12 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories=Category::pluck('name','id'); // {'id':'name'}
+
+        $tags= Tag::all();
+
+        return view('admin.posts.create', compact('categories', 'tags'));
+    
     }
 
     /**
