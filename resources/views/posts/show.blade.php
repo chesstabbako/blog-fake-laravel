@@ -2,16 +2,17 @@
 
     <div class="container py-8 max-w-7xl mx-auto px-2">
 
-         <h1 class="text-2xl font-bold text-gray-600">{{$post->name}}</h1>
-
-
-         <div class="text-lg text-gray-400 mb-2">
+        <h1 class="text-2xl font-bold text-gray-600">
+            {{$post->name}}
+        </h1>
+        
+        <div class="text-lg text-gray-400 mb-2">
 
            {{$post->extract}}
 
-         </div>
-
-         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        </div>
+    
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
             <div class="lg:col-span-2">
               
@@ -37,6 +38,7 @@
                 <div>
 
                     <ul>
+                         
                          @foreach ($similares as $similar)
 
                          <li class="mb-4">
@@ -49,9 +51,6 @@
                                 <span class="ml-2 text-gray-600">{{$similar->name}}</span>
 
                             </a>
-                            
-
-
 
                          </li>
                              
