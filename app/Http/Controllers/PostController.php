@@ -40,14 +40,14 @@ class PostController extends Controller
                           ->where('status', 2)
                           ->latest('id')
                           ->paginate(5);
-
+      
         return view('posts.category', compact('posts', 'category'));
     
      }
 
      public function tag(Tag $tag){
 
-        $posts= $tag->posts()
+        $posts= $tag->posts() 
                      ->where('status', 2)
                      ->latest('id')
                      ->paginate(5);

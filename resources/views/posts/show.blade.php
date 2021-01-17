@@ -19,21 +19,21 @@
                 <figure>
                   
                     <img class="w-full h-80 object-cover object-center" 
-                    src="{{Storage::url($post->images->url)}}" alt="">
+                     src="{{Storage::url($post->images->url)}}" alt="">
 
                 </figure>
 
                 <div class="text-base text-gray-500 mt-4">
-
                     {{$post->body}}
-
                 </div>
                   
             </div>
 
             <aside>
 
-                <h1 class="text-2xl font-bold text-gray-600 mb-4">Más en {{$post->category->name}}</h1>
+                <h1 class="text-2xl font-bold text-gray-600 mb-4">
+                    Más en {{$post->category->name}}
+                </h1>
                 
                 <div>
 
@@ -48,7 +48,9 @@
                                 <img class="w-36 h-20 object-cover object-center" 
                                 src="{{Storage::url($similar->images->url)}}" 
                                 alt="">
-                                <span class="ml-2 text-gray-600">{{$similar->name}}</span>
+                                <span class="ml-2 text-gray-600">
+                                    {{$similar->name}}
+                                </span>
 
                             </a>
 
@@ -62,7 +64,7 @@
 
             </aside>
 
-         </div>
+        </div>
 
     </div>
 

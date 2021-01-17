@@ -22,12 +22,15 @@
         <x-jet-banner />
 
         <div class="min-h-screen bg-gray-100">
-            @livewire('navigation')
-
+            {{-- @livewire('navigation') --}}
+        
+           <livewire:navigation/>
+        
             <!-- Page Content -->
             <main>
                 {{ $slot }}
             </main>
+
         </div>
 
         @stack('modals')
