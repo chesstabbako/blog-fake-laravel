@@ -132,7 +132,7 @@ class PostController extends Controller
             }else{
 
                 $post->images()->create([
-
+                
                    'url' => $url,
                    'imageable_id' => $post->id,
                    'imageable_type' => Post::class
@@ -140,7 +140,7 @@ class PostController extends Controller
                 ]);
 
             }
-
+        
         }
 
         if($request->tags){
