@@ -8,7 +8,7 @@
         
             <article class="w-full h-80 bg-cover bg-center 
               @if($loop->first) md:col-span-2 @endif" 
-              style="background-image: url({{Storage::url($post->images->url)}})">
+              style="background-image:url(@if($post->images){{Storage::url($post->images->url)}} @else https://i.pinimg.com/originals/aa/cd/46/aacd46c3647727dffb01bae41bb9f69c.jpg @endif )">
              
                <div class="w-full h-full px-8 flex flex-col justify-center">
                   

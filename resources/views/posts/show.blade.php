@@ -3,12 +3,12 @@
     <div class="container py-8 max-w-7xl mx-auto px-2">
 
         <h1 class="text-2xl font-bold text-gray-600">
-            {{$post->name}}
+            {!!$post->name!!}
         </h1>
         
         <div class="text-lg text-gray-400 mb-2">
 
-           {{$post->extract}}
+           {!!$post->extract!!}
 
         </div>
     
@@ -17,14 +17,19 @@
             <div class="lg:col-span-2">
               
                 <figure>
-                  
+
+                    @if ($post->images)
                     <img class="w-full h-80 object-cover object-center" 
-                     src="{{Storage::url($post->images->url)}}" alt="">
+                    src="{{Storage::url($post->images->url)}}" alt="">
+                    @else
+                    <img class="w-full h-80 object-cover object-center" 
+                    src="https://i.pinimg.com/originals/aa/cd/46/aacd46c3647727dffb01bae41bb9f69c.jpg" alt="">
+                    @endif        
 
                 </figure>
 
                 <div class="text-base text-gray-500 mt-4">
-                    {{$post->body}}
+                    {!!$post->body!!}
                 </div>
                   
             </div>
@@ -45,9 +50,16 @@
                            
                             <a class="flex" href="{{route('posts.show', $similar)}}">
                                
+                                @if ($similar->images)
                                 <img class="w-36 h-20 object-cover object-center" 
                                 src="{{Storage::url($similar->images->url)}}" 
                                 alt="">
+                                @else
+                                <img class="w-36 h-20 object-cover object-center" 
+                                src="https://i.pinimg.com/originals/aa/cd/46/aacd46c3647727dffb01bae41bb9f69c.jpg"
+                                alt=""> 
+                                @endif
+                                
                                 <span class="ml-2 text-gray-600">
                                     {{$similar->name}}
                                 </span>

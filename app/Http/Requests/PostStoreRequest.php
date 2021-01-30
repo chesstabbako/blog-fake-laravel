@@ -13,17 +13,9 @@ class PostStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        
-        if($this->user_id == auth()->user()->id){
 
-          return true;
+       return true;
 
-        }else{
-
-           return false;
-
-        }
-        
     }
 
     /**
@@ -33,20 +25,30 @@ class PostStoreRequest extends FormRequest
      */
     public function rules()
     {
+    
+        $post= $this->route()->parameter('post'); 
+
         $rules=[
            
             'name'=>'required',
             'slug' =>'required|unique:posts',
-            'status' => 'required|in:1,2'
-
+            'status' => 'required|in:1,2',
+            'file' => 'image'
+        
         ];
+
+        if($post){
+        
+           $rules['slug']= 'required|unique:posts,slug,' . $post->id;
+        
+        } 
 
         if($this->status == 2){
 
             $rules = array_merge($rules,[
                  
                 'category_id' => 'required',
-                'tags[]' => 'required',
+                'tags' => 'required',
                 'extract' => 'required',
                 'body' => 'required'
                
