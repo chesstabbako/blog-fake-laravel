@@ -82,6 +82,10 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+
+        $this->authorize('author', $post);
+
+
         return view('admin.posts.show', compact('post'));
     }
 
@@ -93,6 +97,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+
+        $this->authorize('author', $post);
 
         $categories=Category::pluck('name','id'); // {'id':'name'}
         $tags= Tag::all();
@@ -109,7 +115,9 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(PostStoreRequest $request, Post $post)
+   
     {
+        $this->authorize('author', $post);
         
        $post->update($request->all());
 
@@ -161,14 +169,18 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        
+        $this->authorize('author', $post);
 
         $post->delete();
 
-        if($post->images){
+       /*  if($post->images){
 
           Storage::delete($post->images->url);
 
-        }
+        } Vamos a hacerlo por medio de los watchers 
+        
+        php artisan make:observer PostObserver --model=Post*/
 
         return redirect()->route('admin.posts.index');
         
