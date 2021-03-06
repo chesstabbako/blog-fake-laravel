@@ -13,7 +13,8 @@
            
           {!! Form::open(['route'=>'admin.posts.store', 'files' => true]) !!}
            
-          {!! Form::hidden('user_id', Auth::user()->id) !!}
+          {{-- {!! Form::hidden('user_id', Auth::user()->id) !!} esto
+          se hace con el observer PostObserver--}}
 
             @include('admin.posts.partials.form')
 
