@@ -19,7 +19,7 @@
     
         <h2 class="h5">Listado de roles</h2>
 
-        {!! Form::model($user, ['route'=>['admin.users.update', $user]], 'method'=>'put') !!}
+        {!! Form::model($user, ['route' => ['admin.users.update', $user], 'method'=>'put']) !!}
     
         @foreach ($roles as $role)
 
@@ -33,12 +33,10 @@
             </label>
 
         </div>
-            
-
-
-        {!! Form::submit('Asignar rol', ['class'=>'btn btn-primary']) !!}
 
         @endforeach
+
+        {!! Form::submit('Asignar rol', ['class'=>'btn btn-primary']) !!}
 
         {!! Form::close() !!}
 
