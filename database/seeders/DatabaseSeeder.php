@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
 use Database\Seeders\UserSeeder;
 use App\Models\Tag;
+use Database\Seeders\PoleSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,6 +22,8 @@ class DatabaseSeeder extends Seeder
         Storage::deleteDirectory('posts');
         Storage::makeDirectory('posts');
 
+        $this->call(PoleSeeder::class);
+        
         $this->call(UserSeeder::class);
         Category::factory(3)->create();
         Tag::factory(8)->create();
